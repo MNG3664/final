@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="admin-home.css">
+    <style>
+        /* Add your custom styles here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input[type="file"] {
+            margin-bottom: 10px;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Admin Dashboard</h1>
+    <nav>
+        <div class="container">
+            <h1>Admin Dashboard</h1>
+            <ul>
+                <li><a href="#"><i class="fas fa-users"></i> Users</a></li>
+                <li><a href="#"><i class="fas fa-project-diagram"></i> Projects</a></li>
+                <li><a href="/registeruser.html"><i class="fas fa-user-plus"></i> Register User</a></li>
+                <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                <li><a href="#" id="logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li> <!-- Added id="logout" -->
+            </ul>
+        </div>
+    </nav>
+</header>
+<main>
+    <div class="container">
+        <section class="users">
+            <h2>Users</h2>
+            <ul>
+                <!-- List of users will be dynamically added here -->
+            </ul>
+        </section>
+        <section class="projects">
+            <h2>Projects</h2>
+            <ul>
+                <!-- List of projects will be dynamically added here -->
+            </ul>
+        </section>
+    </div>
+</main>
+
+<!-- Add your JavaScript code here -->
+<script>
+    // Function to handle logout
+    function logout() {
+        window.location.href = "login.html";
+    }
+
+    // Add event listener to logout link
+    document.getElementById('logout').addEventListener('click', logout);
+</script>
+
+</body>
+</html>

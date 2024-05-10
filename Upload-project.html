@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Upload Project</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    
+</head>
+<body>
+    <div class="container">
+        <h2>Upload Project</h2>
+<form id="projectForm">
+    <label for="projectTitle">Project Title:</label>
+    <input type="text" id="projectTitle" name="projectTitle" required>
+  
+    <label for="projectFile">Project File:</label>
+    <input type="file" id="projectFile" name="projectFile" required>
+  
+    <button type="submit">Upload Project</button>
+  </form>
+    </div>
+    <script>
+        
+const projectForm = document.getElementById('projectForm');
+
+// Add an event listener for form submission
+projectForm.addEventListener('submit', (event) => {
+  event.preventDefault(); // Prevent the default form submission
+
+  // Get the form data
+  const formData = new FormData(projectForm);
+
+  // Send the form data to the server using fetch
+  fetch('/submit-project', {
+    method: 'POST',
+    body: formData
+  })
+  .then(response => {
+    // Handle the response from the server
+    console.log('Project submitted successfully');
+
+  })
+  .catch(error => {
+    // Handle any errors
+    console.error('Error submitting project:', error);
+    
+  });
+});
+    </script>
+</body>
+</html>>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Registeration</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='registeruser.css'>
+</head>
+<body>
+    <section class="register-user">
+        <h2>Register User</h2>
+        <form id="registerUserForm" method="POST" action="/register">
+            <label for="userType">User Type:</label>
+            <select id="userType" name="userType" required>
+                <option value="">Select User Type</option>
+                <option value="supervisor">Supervisor</option>
+                <option value="student">Student</option>
+            </select>
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName" required>
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" required>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <input type="submit" value="Register User">
+            <label for="supervisorId">Supervisor ID:</label>
+            <input type="number" id="supervisorId" name="supervisorId">
+
+        </form>
+    </section>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('registerUserForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        // Validate user type
+        const userType = document.getElementById('userType').value;
+        if (userType === '') {
+            alert('Please select a user type.');
+            return;
+        }
+
+        // Send the user registration data to the server
+        fetch('/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                userType: userType,
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                username: document.getElementById('username').value,
+                email: document.getElementById('email').value,
+                password: document.getElementById('password').value
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Handle server response
+            alert('User registered successfully.'); // Display success message
+            console.log('User registered:', data);
+        })
+        .catch(error => {
+            console.error('Error registering user:', error);
+            // Handle errors
+        });
+
+        document.getElementById('registerUserForm').reset();
+    });
+});
+
+    </script>
+</body>
+</html>

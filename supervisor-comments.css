@@ -1,0 +1,82 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    background-color:  #45454a; 
+    padding: 10px 0;
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    display: inline;
+}
+
+a {
+    color: #fff; /* Navigation link text color */
+    text-decoration: none;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease; /* Smooth transition effect */
+}
+
+a:hover {
+    background-color:  #45454a; /* Navigation link background color on hover */
+}
+
+.container {
+    background-color: #fff; /* Container background color */
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 600px;
+}
+
+h2 {
+    color: #555; /* Section header text color */
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+.container p {
+    margin: 0;
+}
+
+/* Project list styles */
+#projectslist {
+    background-color: #fff; /* Section background color */
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+#projectslist {
+    border-bottom: 1px solid #ddd; /* Add a border between projects */
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+
+#projectslist h3 {
+    margin-top: 0;
+}
+
+#projectslist p {
+    margin: 10px 0;
+}

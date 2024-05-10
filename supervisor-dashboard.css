@@ -1,0 +1,121 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color:#45454a; 
+    color: #fff; 
+    padding: 20px;
+    display: flex; 
+    justify-content: center;
+}
+
+nav ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+nav ul li {
+    display: inline;
+    text-align: center;
+}
+
+nav ul li a {
+    color: #fff; /* Link color */
+    text-decoration: none;
+    padding: 10px;
+    text-align: center;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+.notifications, .students {
+    background-color: #fff; /* Section background color */
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+h2 {
+    color: #555; /* Section header text color */
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+a {
+    color: #007bff; /* Link color */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.projects {
+    background-color: #fff; /* Section background color */
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+.project {
+    border-bottom: 1px solid #ddd; /* Add a border between projects */
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+
+.project h3 {
+    margin-top: 0;
+}
+
+.project p {
+    margin: 10px 0;
+}
+
+button {
+    background-color: #007bff; /* Button background color */
+    color: #fff; /* Button text color */
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3; /* Button background color on hover */
+}
+
+.comments {
+    list-style-type: none;
+    padding: 0;
+}
+
+.comments li {
+    border-bottom: 1px solid #ddd; /* Add a border between comments */
+    padding: 5px 0;
+}
+
+.comments li:last-child {
+    border-bottom: none; /* Remove border for the last comment */
+}

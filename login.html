@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="login.css">
+
+  <title>Login</title>
+</head>
+<body>
+  <h1>Login</h1>
+  <form id="login-form">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required><br><br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required><br><br>
+    <select id="user-type" name="user-type">
+      <option value="admin">Admin</option>
+      <option value="student">Student</option>
+      <option value="supervisor">Supervisor</option>
+    </select><br><br>
+    <button type="submit">Login</button>
+  </form>
+
+  <script>
+    document.getElementById('login-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      if (validateForm()) {
+        var formData = new FormData(this);
+        var userType = formData.get('user-type');
+        var userData = {
+          username: formData.get('username'),
+          password: formData.get('password')
+        };
+  
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+          if (this.readyState == 4) {
+            if (this.status == 200) {
+              var response = JSON.parse(this.responseText);
+              alert(response.message);
+              // Redirect to appropriate page based on user type
+              window.location.href = response.redirectUrl;
+            } else {
+              alert('Login failed. Please check your credentials.');
+            }
+          }
+        };
+        xhr.open("POST", "/login?type=" + userType, true);
+        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        xhr.send(JSON.stringify(userData));
+      }
+    });
+  
+    function validateForm() {
+      var username = document.getElementById('username').value;
+      var password = document.getElementById('password').value;
+  
+      if (username.trim() === '' || password.trim() === '') {
+        alert('Username and password are required.');
+        return false;
+      }
+      return true;
+    }
+  </script>
+  
+</body>
+</html>

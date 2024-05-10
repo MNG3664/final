@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <!-- Link to external CSS file for styling -->
+    <link rel="stylesheet" href="student-dashboard.css">
+    <script src="/socket.io/socket.io.js"></script>
+
+</head>
+<body>
+    <!-- Navigation menu -->
+    <nav>
+        <ul>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="/supervisor-comments.html">Supervisor Comments</a></li>
+            <li><a href="#profile">Profile</a></li> 
+            <li><a href="#" id="logout">Logout</a></li>
+            <li><a href="/Upload-project.html">Upload Project</a></li> 
+        </ul>
+    </nav>
+
+    
+      
+    </ul>
+
+    <!-- Dashboard section for student profile -->
+    <section id="profile" class="container">
+        <h2>Profile</h2>
+        <!-- Add elements to display student profile information -->
+        <p>Name: John Doe</p>
+        <p>Email: john@example.com</p>
+        <p>Student ID: 123456</p>
+    </section>
+    
+    <script>
+       // Function to handle logout
+function logout() {
+    window.location.href = "login.html";
+}
+
+
+
+// Render projects and comments from example data
+const projectList = document.getElementById('projectList');
+commentData.forEach(project => {
+    const projectItem = document.createElement('li');
+    projectItem.textContent = project.title;
+
+    const commentsList = document.createElement('ul');
+    project.comments.forEach(comment => {
+        const commentItem = document.createElement('li');
+        commentItem.textContent = comment.text;
+        commentsList.appendChild(commentItem);
+    });
+
+    projectItem.appendChild(commentsList);
+    projectList.appendChild(projectItem);
+});
+
+// Add event listener to logout link
+document.getElementById('logout').addEventListener('click', logout);
+
+    </script>
+</body>
+</html>

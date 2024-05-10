@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supervisor Dashboard</title>
+    <link rel="stylesheet" href="supervisor-dashboard.css">
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#supervisor_comments">Supervisor Comments</a></li>
+                <li><a href="#profile">Profile</a></li> 
+                <li><a href="#" id="logout">Logout</a></li> 
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="notifications">
+            <h2>Notifications</h2>
+            <p>No new notifications at the moment.</p>
+        </section>
+
+        <section class="students">
+            <h2>Students You Are Supervising</h2>
+            <ul>
+                <!-- Add dynamic content for the list of students -->
+                <li><a href="student1_profile.html">Student 1</a></li>
+                <li><a href="student2_profile.html">Student 2</a></li>
+            </ul>
+        </section>
+
+        <ul id="projectList">
+            <!-- Projects will be dynamically added here -->
+        </ul>
+        
+        <!-- Supervisor Comment Form -->
+        <form id="commentForm">
+            <label for="commentText">Add Comment:</label>
+            <textarea id="commentText" name="commentText" required></textarea>
+            <input type="hidden" id="projectId" name="projectId">
+            <button type="submit">Submit Comment</button>
+        </form>
+    </main>
+    <script>
+        // Function to handle logout
+        function logout() {
+            window.location.href = "login.html";
+        }
+        
+        // Example data for projects
+        const projectData = [
+            {
+                id: 1,
+                title: "Project 1"
+            },
+            {
+                id: 2,
+                title: "Project 2"
+            }
+        ];
+    
+        // Render projects
+        const projectList = document.getElementById('projectList');
+        projectData.forEach(project => {
+            const projectItem = document.createElement('li');
+            const projectLink = document.createElement('a');
+            projectLink.textContent = project.title;
+            projectLink.href = `#project${project.id}`;
+            projectItem.appendChild(projectLink);
+            projectList.appendChild(projectItem);
+        });
+    
+        // Function to handle form submission
+        document.getElementById('commentForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+            
+            // Get comment text and project ID
+            const commentText = document.getElementById('commentText').value;
+            const projectId = document.getElementById('projectId').value;
+            
+            // Do something with the comment, for example, display it on the page
+            const commentContainer = document.createElement('div');
+            commentContainer.textContent = `Comment for Project ${projectId}: ${commentText}`;
+            document.body.appendChild(commentContainer);
+            
+            
+            document.getElementById('commentText').value = '';
+        });
+        
+        // Add event listener to logout link
+        document.getElementById('logout').addEventListener('click', logout);
+
+        const socket = io();
+
+// Listen for 'newProject' event
+socket.on('newProject', (data) => {
+  // Add the new project dynamically to the supervisor's view
+  const projectList = document.getElementById('projectList');
+  const projectItem = document.createElement('li');
+  projectItem.textContent = data.projectTitle + ': ' + data.projectDescription;
+  projectList.appendChild(projectItem);
+});
+    </script>
+    
+</body>
+</html>
